@@ -1,184 +1,117 @@
-/* docs/assets/css/codex.css */
+/* Parchment + old-book vibe layered on top of Bootstrap */
 
 :root {
-  --bg: #050509;
-  --bg-alt: #101018;
-  --fg: #f4f4f8;
-  --muted: #9a9ab0;
-  --accent: #7dd3fc;        /* cyan-ish */
-  --accent-soft: rgba(125, 211, 252, 0.12);
-  --border-subtle: #1b1b27;
-  --radius: 10px;
-  --max-width: 900px;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading: "Georgia", "Times New Roman", serif;
+  --codex-paper: #f4ecd3;
+  --codex-paper-dark: #e5d6b5;
+  --codex-ink: #3b3020;
+  --codex-muted: #756752;
+  --codex-accent: #8d4b2b; /* a warm brown-red */
 }
 
-/* Reset-ish */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* Overall body */
 
-body {
+.codex-body {
   margin: 0;
-  background: radial-gradient(circle at top, #141824 0, #050509 55%);
-  color: var(--fg);
-  font-family: var(--font-body);
-  line-height: 1.6;
+  background:
+    radial-gradient(circle at top, #c5b28b 0, #b99c6f 40%, #a18455 80%);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--codex-ink);
 }
 
-/* Layout */
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 1.25rem 1rem 3rem;
+/* The main page panel */
+
+.codex-page {
+  background: var(--codex-paper);
+  border-radius: 8px;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(0, 0, 0, 0.18);
+  max-width: 960px;
 }
 
-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-subtle);
-}
+/* Title / headings */
 
-header h1 {
-  font-family: var(--font-heading);
+.codex-title {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  margin: 0 0 0.5rem;
+  letter-spacing: 0.18em;
+  font-size: 1.6rem;
   text-transform: uppercase;
+  color: var(--codex-ink);
 }
 
-header .subtitle {
-  color: var(--muted);
+.codex-subtitle {
+  color: var(--codex-muted);
   font-size: 0.95rem;
 }
 
-/* Typography */
-h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  color: var(--accent);
-  margin-top: 2.2rem;
-  margin-bottom: 0.8rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-}
-
-h3 {
-  font-size: 1.25rem;
-}
-
-p, li {
-  font-size: 1.02rem;
-}
-
-em {
-  color: var(--muted);
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+.codex-section-heading {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+  color: var(--codex-accent);
 }
 
 /* Sections */
-.section {
-  background: var(--bg-alt);
-  border-radius: var(--radius);
-  border: 1px solid var(--border-subtle);
-  padding: 1.25rem 1rem;
-  margin: 1.25rem 0;
+
+.codex-section {
+  background: linear-gradient(
+    to bottom right,
+    #f7efd8,
+    #f2e4c5 60%,
+    #e9d8b8
+  );
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.section-header {
+/* Tags */
+
+.codex-tags {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.35rem;
 }
 
-.section-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
+.codex-tag {
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--codex-ink);
 }
 
-/* Media blocks (gifs, video, audio) */
-.media-block {
-  margin: 1rem 0;
-}
+/* Media */
 
-.media-block figure {
+.codex-media {
   margin: 0;
 }
 
-.media-block img,
-.media-block video {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  display: block;
+.codex-gif {
+  border: 1px solid rgba(0, 0, 0, 0.18);
 }
 
-.media-block audio {
-  width: 100%;
-}
-
-.media-block figcaption {
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  color: var(--muted);
+.codex-caption {
+  margin-top: 0.35rem;
+  color: var(--codex-muted);
   font-style: italic;
+  font-size: 0.85rem;
 }
 
-/* Simple “chip” tags for characters, movement types, etc. */
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0.5rem 0 0.25rem;
+/* General text tweaks */
+
+p {
+  font-size: 1rem;
 }
 
-.tag {
-  font-size: 0.75rem;
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  border: 1px solid rgba(125, 211, 252, 0.35);
-}
+/* Optional subtle “aged edges” effect on very wide screens */
 
-/* Code / notes */
-code {
-  background: #181826;
-  padding: 0.1rem 0.3rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-pre {
-  background: #181826;
-  padding: 0.8rem 1rem;
-  border-radius: var(--radius);
-  overflow-x: auto;
-  font-size: 0.9rem;
-}
-
-/* Simple responsive tweak for wider screens */
-@media (min-width: 768px) {
-  main {
-    padding: 2.5rem 1.5rem 4rem;
-  }
-
-  .section {
-    padding: 1.5rem 1.25rem;
+@media (min-width: 992px) {
+  .codex-page {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
